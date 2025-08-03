@@ -27,7 +27,7 @@ char	*read_file(int fd, char *leftover)
 		if ((!leftover && readed == 0) || readed == -1)
 			return (free(buff), NULL);
 		buff[readed] = '\0';
-		leftover = ft_strjoin(leftover, buff);
+                leftover = ft_strjoin_gnl(leftover, buff);
 	}
 	return (leftover);
 }
