@@ -1,0 +1,58 @@
+/* XPM */
+static char *frame_r3_c0[] = {
+/* columns rows colors chars-per-pixel */
+"32 32 8 1 ",
+"  c None",
+". c #0E0D0E",
+"X c #0A7030",
+"o c #7C776F",
+"O c #D2202C",
+"+ c #EBA724",
+"@ c #B3AAA1",
+"# c #EADFD1",
+/* pixels */
+"                                ",
+"                                ",
+"                                ",
+"                                ",
+"                                ",
+"                                ",
+"                                ",
+"                                ",
+"                                ",
+"                                ",
+"          .......               ",
+"         ..OOOOO..              ",
+"         .O..OOOO.              ",
+"         .....OO.....           ",
+"           .###ooooo.           ",
+"           .#.........          ",
+"           .o.###@@@@.          ",
+"           .o.#.@.@.@.          ",
+"           .o.@.@.@.@.          ",
+"           .o.@.@.@.@.          ",
+"           .o.@@@@@@@.          ",
+"          ............          ",
+"        ...XXX++++++.           ",
+"        .XXXXX+.......          ",
+"        .XXXX++.oooo@.          ",
+"        .+++++..oo@@@.          ",
+"        ..............          ",
+"                                ",
+"                                ",
+"                                ",
+"                                ",
+"                                "
+};
+moving_left_r3_c3.xpm
+moving_left_r3_c4.xpm
+moving_left_r3_c5.xpm
+moving_left_r3_c6.xpm
+moving_left_r3_c7.xpm
+moving_right_r3_c0.xpm
+moving_right_r3_c1.xpm
+moving_right_r3_c2.xpm
+moving_right_r3_c3.xpm
+moving_right_r3_c4.xpm
+moving_right_r3_c5.xpm
+moving_right_r3_c6.xpm

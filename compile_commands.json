@@ -1,0 +1,7 @@
+[
+	{
+		"directory": "/home/fuulgen/ProjectsS/CoreCURRRRRRr/so_long",
+		"command": "clang -Icode/inc -Icode/libft -Icode/mlx -I./assets/mandotory -I./assets/maps -I./assets/sprites -c code/main.c",
+		"file": "code/main.c"
+	}
+]
