@@ -100,6 +100,7 @@ char		**duplicate_map(char **map);
 // --- GET_NEXT_LINE ---
 // size_t ft_strlen(char *str);
 // char *ft_strjoin(char *leftover, char *buff);
+char            *ft_strjoin_gnl(char *leftover, char *buff);
 // void *ft_calloc(size_t count, size_t size);
 char		*newline_exist(char *str);
 char		*get_next_line(int fd);

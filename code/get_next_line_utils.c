@@ -6,76 +6,65 @@
 /*   By: fuulgen <fuulgen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 16:53:58 by bkaztaou          #+#    #+#             */
-/*   Updated: 2025/07/28 10:36:08 by fuulgen          ###   ########.fr       */
+/*   Updated: 2025/09/28 10:00:00 by fuulgen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char	*newline_exist(char *str)
+char    *newline_exist(char *str)
 {
-	int	i;
+        int     i;
 
-	i = 0;
-	if (!str)
-		return (NULL);
-	while (str[i])
-	{
-		if (str[i] == '\n')
-			return (&str[i]);
-		i++;
-	}
-	return (NULL);
+        i = 0;
+        if (!str)
+                return (NULL);
+        while (str[i])
+        {
+                if (str[i] == '\n')
+                        return (&str[i]);
+                i++;
+        }
+        return (NULL);
 }
 
-// size_t	ft_strlen(char *str)
-// {
-// 	size_t	i;
+/*
+** Join two strings and free the originals.
+**
+** `leftover` may be NULL on the first call. In that case an empty
+** string is allocated so that the concatenation behaves as expected.
+** `buff` must be a valid allocated string. The returned string is a
+** newly allocated buffer containing the concatenation of both inputs.
+*/
+char    *ft_strjoin_gnl(char *leftover, char *buff)
+{
+        char    *temp;
+        size_t  i;
+        size_t  j;
 
-// 	i = 0;
-// 	while (str[i])
-// 		i++;
-// 	return (i);
-// }
+        if (!leftover && !buff)
+                return (NULL);
+        if (!leftover)
+        {
+                leftover = ft_calloc(1, sizeof(char));
+                if (!leftover)
+                        return (free(buff), NULL);
+        }
+        temp = malloc(ft_strlen(leftover) + ft_strlen(buff) + 1);
+        if (!temp)
+                return (free(leftover), free(buff), NULL);
+        i = 0;
+        while (leftover[i])
+        {
+                temp[i] = leftover[i];
+                i++;
+        }
+        j = 0;
+        while (buff[j])
+                temp[i++] = buff[j++];
+        temp[i] = '\0';
+        free(leftover);
+        free(buff);
+        return (temp);
+}
 
-// char	*ft_strjoin(char *leftover, char *buff)
-// {
-// 	int		i;
-// 	int		j;
-// 	char	*temp;
-
-// 	if (!leftover && !buff)
-// 		return (NULL);
-// 	if (!leftover)
-// 		leftover = ft_calloc(1, sizeof(char));
-// 	temp = malloc(sizeof(char) * (ft_strlen(leftover) + ft_strlen(buff) + 1));
-// 	if (!temp)
-// 		return (NULL);
-// 	i = -1;
-// 	while (leftover[++i])
-// 		temp[i] = leftover[i];
-// 	j = -1;
-// 	while (buff[++j])
-// 		temp[i++] = buff[j];
-// 	temp[i] = '\0';
-// 	return (free(leftover), free(buff), temp);
-// }
-
-// void	*ft_calloc(size_t count, size_t size)
-// {
-// 	size_t	i;
-// 	char	*ptr;
-
-// 	i = 0;
-// 	if (count && size > SIZE_MAX / count)
-// 		return (NULL);
-// 	ptr = malloc(count * size);
-// 	if (!ptr)
-// 		return (NULL);
-// 	while (i < count)
-// 	{
-// 		ptr[i] = '\0';
-// 		i++;
-// 	}
-// 	return (ptr);
-// }
