@@ -6,7 +6,7 @@
 /*   By: fuulgen <fuulgen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 23:19:26 by fuulgen           #+#    #+#             */
-/*   Updated: 2025/07/27 23:22:53 by fuulgen          ###   ########.fr       */
+/*   Updated: 2025/08/03 18:17:09 by fuulgen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,17 @@
 char	**duplicate_map(char **map)
 {
 	int		len;
+	int		i;
 	char	**dup;
 
+	i = 0;
 	len = 0;
 	while (map[len])
 		len++;
 	dup = (char **)malloc((len + 1) * sizeof(char *));
 	if (!dup)
 		return (NULL);
-	for (int i = 0; i < len; i++)
+	while (i < len)
 	{
 		dup[i] = ft_strdup(map[i]);
 		if (!dup[i])
@@ -33,6 +35,7 @@ char	**duplicate_map(char **map)
 			free(dup);
 			return (NULL);
 		}
+		i++;
 	}
 	dup[len] = NULL;
 	return (dup);

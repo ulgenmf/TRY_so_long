@@ -6,11 +6,12 @@
 /*   By: fuulgen <fuulgen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 07:51:47 by fuulgen           #+#    #+#             */
-/*   Updated: 2025/07/28 10:34:09 by fuulgen          ###   ########.fr       */
+/*   Updated: 2025/08/04 09:59:53 by fuulgen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <stdlib.h>
 
 // void	wait_(int n)
 // {
@@ -57,6 +58,7 @@ int	is_map_solvable(char **src_map)
 	free_map(map);
 	return (result);
 }
+
 void	big_fat_error_handler(char **map, char *file_name)
 {
 	if (!map)
@@ -83,16 +85,27 @@ void	big_fat_error_handler(char **map, char *file_name)
 	check_file_name(file_name);
 	check_elements(map);
 }
+
 void	run_that_shit(char *argv_file_name)
 {
-	char **map;
-	int flood_result;
+	char	**map;
+	int		flood_result;
+	int		i;
+
+	i = 0;
 	map = get_map(argv_file_name);
 	parse_map(map, argv_file_name);
 	flood_result = is_map_solvable(map);
-
 	if (flood_result == 0)
 		writer("\n\n\033[32mMAP IS LEGIT !\033[0m\n");
 	else
-		error_writer("\nMap is not solvable\n");
+	{
+		error_writer("\nMap is not solvable `flood fill err`\n");
+	}
+	while (map[i])
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fuulgen <fuulgen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/09 16:54:06 by bkaztaou          #+#    #+#             */
-/*   Updated: 2025/07/19 13:36:24 by fuulgen          ###   ########.fr       */
+/*   Created: 2025/08/03 17:17:24 by fuulgen           #+#    #+#             */
+/*   Updated: 2025/08/03 17:17:25 by fuulgen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*read_file(int fd, char *leftover)
 		if ((!leftover && readed == 0) || readed == -1)
 			return (free(buff), NULL);
 		buff[readed] = '\0';
-                leftover = ft_strjoin_gnl(leftover, buff);
+		leftover = ft_strjoin_gnl(leftover, buff);
 	}
 	return (leftover);
 }

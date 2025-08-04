@@ -6,7 +6,7 @@
 /*   By: fuulgen <fuulgen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 21:05:15 by fuulgen           #+#    #+#             */
-/*   Updated: 2025/07/27 23:25:03 by fuulgen          ###   ########.fr       */
+/*   Updated: 2025/08/03 17:31:31 by fuulgen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	error_handler(t_errors error)
 			"\033[31m\n ***Errors are propably broken"
 			" ignore the explanation of the "
 			"error*** \n\033[0m",
-			72);
+			77);
 	//    exit(EXIT_FAILURE);`
 }
 
@@ -77,8 +77,8 @@ int	check_elements(char **map)
 	if (p_count != 1 || e_count != 1 || c_count < 1)
 		error_handler(WRONG_ELEMENT_COUNT);
 	ft_printf("\033[33mPassed: Correct amount"
-				"of element counts{ P = % d E = % d "
-				"C=%d}\033[0m\n",
+				"of element counts { P = %d E = %d "
+				"C = %d }\033[0m\n",
 				p_count,
 				e_count,
 				c_count);

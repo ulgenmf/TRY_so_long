@@ -6,7 +6,7 @@
 /*   By: fuulgen <fuulgen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 21:30:58 by fuulgen           #+#    #+#             */
-/*   Updated: 2025/07/19 13:51:57 by fuulgen          ###   ########.fr       */
+/*   Updated: 2025/08/04 10:19:54 by fuulgen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,10 +93,6 @@ char	**get_map(char *m)
 	char	**map;
 
 	line_n = map_line_counter(m);
-	if (line_n <= 0)
-	{
-		error_handler(UNKNOWN_ERROR);
-	}
 	fd = open(m, O_RDONLY);
 	if (fd < 0)
 	{
@@ -106,6 +102,7 @@ char	**get_map(char *m)
 	if (!map)
 	{
 		close(fd);
+
 		error_handler(MLX_FAIL);
 	}
 	fill_map_data(fd, map);
