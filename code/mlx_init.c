@@ -14,7 +14,6 @@
 /* **************************************************************************
  */
 //
-#include "mlx/mlx.h"
 #include "so_long.h"
 
 // typedef struct s_game {
@@ -25,37 +24,34 @@
 //   int collected;
 // } t_game;
 
-t_game	*mlx_init_(t_map *map_obj)
-{
-	t_game	*obj;
-	void	*mlx;
-	void	*window;
+t_game *mlx_init_(t_map **map_obj) {
+  t_game *obj;
+  void *mlx;
+  void *window;
 
-	mlx = mlx_init();
-	window = mlx_new_window(mlx, 1280, 1280, "shit");
-	obj = malloc(sizeof(t_game));
-	if (!obj)
-	{
-		free(obj);
-		error_handler(MLX_FAIL);
-	}
-	obj->mlx = mlx;
-	obj->win = window;
-	obj->map = *map_obj;
-	obj->moves = 0;
-	obj->collected = 0;
-	return (obj);
+  mlx = mlx_init();
+  window = mlx_new_window(mlx, TILE_SIZE * (*map_obj)->size.x,
+                          TILE_SIZE * (*map_obj)->size.y, "shit");
+  obj = malloc(sizeof(t_game));
+  if (!obj) {
+    free(obj);
+    error_handler(MLX_FAIL);
+  }
+  obj->mlx = mlx;
+  obj->win = window;
+  obj->map = *map_obj;
+  obj->moves = 0;
+  obj->collected = 0;
+  return (obj);
 }
 
-void	free_mlx_obj(t_game *obj)
-{
-	// t_map map;
-	// map = obj->map;
-	// free_map_object(&map);
-	// free_map_object(&obj->map);
-	mlx_destroy_window(obj->mlx, obj->win);
-	mlx_destroy_display(obj->mlx);
-	free(obj->mlx);
-
-  free(obj);
+void free_mlx_obj(t_game **obj) {
+  // t_map map;
+  // map = obj->map;
+  // free_map_object(&map);
+  free_map_object((*obj)->map);
+  mlx_destroy_window((*obj)->mlx, (*obj)->win);
+  mlx_destroy_display((*obj)->mlx);
+  free((*obj)->mlx);
+  free(*obj);
 }

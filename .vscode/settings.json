@@ -57,9 +57,10 @@
   "C_Cpp_Runner.useLinkTimeOptimization": false,
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "files.associations": {
-    "*.css": "css",
-    "*.ts": "typescript",
-    "*.json": "json",
-    "stdlib.h": "c"
-  }
+	"*.css": "css",
+	"*.ts": "typescript",
+	"*.json": "json",
+	"stdlib.h": "c",
+	"so_long.h": "c"
+}
 }

@@ -6,10 +6,11 @@
 /*   By: fuulgen <fuulgen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 10:54:25 by fuulgen           #+#    #+#             */
-/*   Updated: 2025/08/04 11:54:12 by fuulgen          ###   ########.fr       */
+/*   Updated: 2025/08/04 17:04:47 by fuulgen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#define ESC_KEY 65307 // X11 keysym for ESC
 typedef struct t_vec {
   int x;
   int y;
@@ -28,7 +29,7 @@ typedef struct s_map {
 typedef struct s_game {
   void *mlx;
   void *win;
-  t_map map;
+  t_map *map;
 
   int moves;
   int collected;
@@ -43,5 +44,5 @@ typedef struct s_textures {
 void get_locations(t_map *object);
 void free_map(char **map);
 void free_map_object(t_map *object);
-void free_mlx_obj(t_game *obj);
-t_game *mlx_init_(t_map *map_obj);
+void free_mlx_obj(t_game **obj);
+t_game *mlx_init_(t_map **map_obj);

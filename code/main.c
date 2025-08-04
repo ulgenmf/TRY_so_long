@@ -24,17 +24,34 @@ void	print_map_info(t_map *map)
 	}
 }
 
+
+int	key_hook(t_game **mlx_obj, int keycode)
+{
+
+	if (keycode == ESC_KEY)
+	{
+		//
+		// Free resources here (images, window, mlx etc.)
+		// Example:
+		// mlx_destroy_window(mlx, win);
+		// mlx_destroy_display(mlx);
+		// free(mlx);
+		free_mlx_obj(&mlx_obj);
+		exit(EXIT_SUCCESS);
+	}
+	return (0);
+}
 int	main(void)
 {
 	t_map	*map_obj;
-	t_game	*mlx_obj;
+	t_game	**mlx_obj;
 
 	run_that_shit("t.ber");
 	map_obj = create_obj("t.ber");
 	print_map_info(map_obj);
-	mlx_obj = mlx_init_(map_obj);
+	mlx_obj = mlx_init_(&map_obj);
+	mlx_key_hook((*mlx_obj)->win, key_hook, &mlx_obj);
 	// mlx_loop(mlx_obj->mlx);
-	free_map_object(map_obj);
-	free_mlx_obj(mlx_obj);
+	//   free_map_object(map_obj);
 	return (0);
 }
