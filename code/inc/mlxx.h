@@ -26,14 +26,6 @@ typedef struct s_map {
   int collectible_count;
 } t_map;
 
-typedef struct s_game {
-  void *mlx;
-  void *win;
-  t_map *map;
-
-  int moves;
-  int collected;
-} t_game;
 typedef struct s_textures {
   void *player;
   void *wall;
@@ -41,9 +33,21 @@ typedef struct s_textures {
   void *exit;
   void *collectible;
 } t_textures;
+
+typedef struct s_game {
+  void *mlx;
+  void *win;
+  t_map *map;
+  t_textures textures;
+
+  int moves;
+  int collected;
+} t_game;
 void get_locations(t_map *object);
 void free_map(char **map);
 void free_map_object(t_map *object);
 void free_mlx_obj(t_game **obj);
 int key_hook(int keycode, t_game *mlx_obj);
 t_game *mlx_init_(t_map **map_obj);
+void load_textures(t_game *game);
+void draw_map(t_game *game);
