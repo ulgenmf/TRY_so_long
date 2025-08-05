@@ -20,12 +20,12 @@ t_map	*create_obj(char *file_name)
 	map = get_map(file_name);
 	if (!map)
 		return (NULL);
-	obj = (t_map *)malloc(sizeof(t_map));
-	if (!obj)
-	{
-		free_map_object(obj);
-		error_handler(MLX_FAIL);
-	}
+        obj = (t_map *)malloc(sizeof(t_map));
+        if (!obj)
+        {
+                free_map(map);
+                error_handler(MLX_FAIL);
+        }
 	obj->grid = duplicate_map(map);
 	obj->player_count = 0;
 	obj->exit_count = 0;
@@ -35,13 +35,11 @@ t_map	*create_obj(char *file_name)
 	return (obj);
 }
 
-void	free_map_object(t_map *object)
+void    free_map_object(t_map *object)
 {
-	char	**map;
-
-	map = object->grid;
-	if (!object)
-		error_handler(MLX_FAIL);
-	free_map(map);
-	free(object);
+        if (!object)
+                return ;
+        if (object->grid)
+                free_map(object->grid);
+        free(object);
 }
