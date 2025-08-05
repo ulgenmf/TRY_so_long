@@ -6,7 +6,7 @@
 /*   By: fuulgen <fuulgen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 17:25:29 by fuulgen           #+#    #+#             */
-/*   Updated: 2025/08/04 18:03:19 by fuulgen          ###   ########.fr       */
+/*   Updated: 2025/08/05 13:39:44 by fuulgen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	free_map_object(t_map *object)
 
 	map = object->grid;
 	if (!object)
-		return ;
+		error_handler(MLX_FAIL);
 	free_map(map);
 	free(object);
 }

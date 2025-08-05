@@ -6,7 +6,7 @@
 /*   By: fuulgen <fuulgen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 10:54:25 by fuulgen           #+#    #+#             */
-/*   Updated: 2025/08/04 17:04:47 by fuulgen          ###   ########.fr       */
+/*   Updated: 2025/08/05 14:55:52 by fuulgen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,5 @@ void get_locations(t_map *object);
 void free_map(char **map);
 void free_map_object(t_map *object);
 void free_mlx_obj(t_game **obj);
+int key_hook(int keycode, t_game *mlx_obj);
 t_game *mlx_init_(t_map **map_obj);
