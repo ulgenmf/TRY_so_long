@@ -6,7 +6,7 @@
 /*   By: fuulgen <fuulgen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 21:05:15 by fuulgen           #+#    #+#             */
-/*   Updated: 2025/08/03 17:31:31 by fuulgen          ###   ########.fr       */
+/*   Updated: 2025/08/05 20:07:46 by fuulgen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ void	error_handler(t_errors error)
 	else
 		error_writer("Error\nUnknown error\n");
 	write(2,
-			"\033[31m\n ***Errors are propably broken"
-			" ignore the explanation of the "
-			"error*** \n\033[0m",
-			77);
-	//    exit(EXIT_FAILURE);`
+		"\033[31m\n ***Errors are propably broken"
+		" ignore the explanation of the "
+		"error*** \n\033[0m",
+		77);
+	exit(EXIT_FAILURE);
 }
 
 void	element_count(int *p_count, int *e_count, int *c_count, char **map)
@@ -77,11 +77,11 @@ int	check_elements(char **map)
 	if (p_count != 1 || e_count != 1 || c_count < 1)
 		error_handler(WRONG_ELEMENT_COUNT);
 	ft_printf("\033[33mPassed: Correct amount"
-				"of element counts { P = %d E = %d "
-				"C = %d }\033[0m\n",
-				p_count,
-				e_count,
-				c_count);
+		"of element counts { P = %d E = %d "
+		"C = %d }\033[0m\n",
+		p_count,
+		e_count,
+		c_count);
 	return (c_count);
 }
 

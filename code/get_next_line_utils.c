@@ -6,7 +6,7 @@
 /*   By: fuulgen <fuulgen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 17:17:16 by fuulgen           #+#    #+#             */
-/*   Updated: 2025/08/03 17:17:17 by fuulgen          ###   ########.fr       */
+/*   Updated: 2025/08/05 20:08:01 by fuulgen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@ char	*newline_exist(char *str)
 		i++;
 	}
 	return (NULL);
+}
+
+void	shitfree(char *leftover, char *buff)
+{
+	free(leftover);
+	free(buff);
 }
 
 char	*ft_strjoin_gnl(char *leftover, char *buff)
@@ -53,7 +59,6 @@ char	*ft_strjoin_gnl(char *leftover, char *buff)
 	while (buff[j])
 		temp[i++] = buff[j++];
 	temp[i] = '\0';
-	free(leftover);
-	free(buff);
+	shitfree(leftover, buff);
 	return (temp);
 }

@@ -6,7 +6,7 @@
 /*   By: fuulgen <fuulgen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 21:30:58 by fuulgen           #+#    #+#             */
-/*   Updated: 2025/08/04 10:19:54 by fuulgen          ###   ########.fr       */
+/*   Updated: 2025/08/05 20:14:27 by fuulgen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ char	*get_map_line(int fd)
 	}
 	return (temp);
 }
+
 char	*process_line(char *line)
 {
 	size_t	len;
@@ -57,6 +58,7 @@ char	*process_line(char *line)
 	}
 	return (line);
 }
+
 static void	fill_map_data(int fd, char **map)
 {
 	int		index;
@@ -102,7 +104,6 @@ char	**get_map(char *m)
 	if (!map)
 	{
 		close(fd);
-
 		error_handler(MLX_FAIL);
 	}
 	fill_map_data(fd, map);

@@ -19,13 +19,12 @@ NC      = \033[0m
 ##############################################
 NAME    = so_long
 OBJDIR  = code/obj
-SRCS    = $(wildcard code/*.c)
-# SRCS    = code/dumb_shit.c code/get_next_line.c code/flood_fill.c \
-#           code/get_next_line_utils.c  map_related_shit.c \
-#           code/main.c\
-# 					code/errors.c code/errors2.c\
-# 					code/map_parsing.c\
-#           code/utils.c
+#SRCS    = $(wildcard code/*.c)
+SRCS    = code/errors2.c              code/init_game_obj.c        code/map_related_shit.c \
+		code/errors.c               code/init_game_obj_utils.c  code/mlx_init.c \
+		code/flood_fill.c           code/key_handler.c          code/render_map.c \
+		code/get_next_line.c        code/main.c                 code/utils.c \
+		code/get_next_line_utils.c  code/map_parsing.c \
 
 OBJS    = $(patsubst code/%.c,$(OBJDIR)/%.o,$(SRCS))
 

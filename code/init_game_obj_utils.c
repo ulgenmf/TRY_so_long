@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_game_utils.c                                  :+:      :+:    :+:   */
+/*   init_game_obj_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fuulgen <fuulgen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 09:36:20 by fuulgen           #+#    #+#             */
-/*   Updated: 2025/08/04 09:37:28 by fuulgen          ###   ########.fr       */
+/*   Updated: 2025/08/05 18:44:42 by fuulgen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	find_collectable(t_map *object)
 			{
 				object->collectable_loc.x = x;
 				object->collectable_loc.y = y;
+				object->collectible_count++;
 			}
 			x++;
 		}

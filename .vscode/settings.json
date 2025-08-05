@@ -61,6 +61,7 @@
 	"*.ts": "typescript",
 	"*.json": "json",
 	"stdlib.h": "c",
-	"so_long.h": "c"
+	"so_long.h": "c",
+	"mlxx.h": "c"
 }
 }

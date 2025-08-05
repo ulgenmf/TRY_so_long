@@ -6,7 +6,7 @@
 /*   By: fuulgen <fuulgen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 22:57:01 by fuulgen           #+#    #+#             */
-/*   Updated: 2025/08/03 17:16:05 by fuulgen          ###   ########.fr       */
+/*   Updated: 2025/08/05 20:23:26 by fuulgen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,6 @@ int	arr_len(char **arr)
 		i++;
 	}
 	return (i);
-}
-
-int	ft_strcmp(char *s1, char *s2)
-{
-	while (*s1 && (*s1 == *s2))
-	{
-		s1++;
-		s2++;
-	}
-	return (*(unsigned char *)s1 - *(unsigned char *)s2);
 }
 
 size_t	f_strlen(char *str)
