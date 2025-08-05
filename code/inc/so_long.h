@@ -17,7 +17,7 @@ char **get_map(char *map);
 #define DEFAULT_MAP "t.ber"
 #endif
 
-#define TILE_SIZE 256
+#define TILE_SIZE 64
 // --- ERROR HANDLER ---
 typedef enum e_errors {
   MAP_FILE_TOO_BIG,
