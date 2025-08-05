@@ -11,29 +11,50 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
-int key_hook(int keycode, t_game *mlx_obj) {
-  if (keycode == 65307) // Escape key
-  {
-    //
-    // Free resources here (images, window, mlx etc.)
-    // Example:
-    // mlx_destroy_window(mlx, win);
-    // mlx_destroy_display(mlx);
-    // free(mlx);
 
-    free_mlx_obj(&mlx_obj);
-    exit(EXIT_SUCCESS);
-  }
+static void try_move(t_game *game, int dx, int dy)
+{
+    int   nx;
+    int   ny;
+    char  dest;
 
-  // Check for W, A, S, D keys and print which one was pressed
-  if (keycode == 119 || keycode == 87) // W or w
-    ft_printf("Key pressed: W\n");
-  else if (keycode == 97 || keycode == 65) // A or a
-    ft_printf("Key pressed: A\n");
-  else if (keycode == 115 || keycode == 83) // S or s
-    ft_printf("Key pressed: S\n");
-  else if (keycode == 100 || keycode == 68) // D or d
-    ft_printf("Key pressed: D\n");
+    nx = game->map->player_loc.x + dx;
+    ny = game->map->player_loc.y + dy;
+    dest = game->map->grid[ny][nx];
+    if (dest == '1')
+        return;
+    if (dest == 'E' && game->collected != game->map->collectible_count)
+        return;
+    if (dest == 'C')
+        game->collected++;
+    if (dest == 'E' && game->collected == game->map->collectible_count)
+    {
+        ft_printf("Moves: %d\n", ++game->moves);
+        free_mlx_obj(&game);
+        exit(EXIT_SUCCESS);
+    }
+    game->map->grid[game->map->player_loc.y][game->map->player_loc.x] = '0';
+    game->map->player_loc.x = nx;
+    game->map->player_loc.y = ny;
+    game->map->grid[ny][nx] = 'P';
+    ft_printf("Moves: %d\n", ++game->moves);
+    draw_map(game);
+}
 
-  return (0);
+int key_hook(int keycode, t_game *mlx_obj)
+{
+    if (keycode == ESC_KEY)
+    {
+        free_mlx_obj(&mlx_obj);
+        exit(EXIT_SUCCESS);
+    }
+    if (keycode == 119 || keycode == 87)
+        try_move(mlx_obj, 0, -1);
+    else if (keycode == 97 || keycode == 65)
+        try_move(mlx_obj, -1, 0);
+    else if (keycode == 115 || keycode == 83)
+        try_move(mlx_obj, 0, 1);
+    else if (keycode == 100 || keycode == 68)
+        try_move(mlx_obj, 1, 0);
+    return (0);
 }

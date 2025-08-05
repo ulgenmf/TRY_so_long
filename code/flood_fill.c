@@ -43,8 +43,10 @@ char	**duplicate_map(char **map)
 
 void	free_map(char **map)
 {
-	int	i;
+	int	 i;
 
+	if (!map)
+		return ;
 	i = 0;
 	while (map[i])
 	{
@@ -53,7 +55,6 @@ void	free_map(char **map)
 	}
 	free(map);
 }
-
 int	find_player(char **map, int *px, int *py)
 {
 	int	y;

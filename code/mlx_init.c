@@ -30,25 +30,48 @@ t_game *mlx_init_(t_map **map_obj) {
   void *window;
 
   mlx = mlx_init();
+  if (!mlx)
+    error_handler(MLX_FAIL);
   window = mlx_new_window(mlx, TILE_SIZE * (*map_obj)->size.x,
                           TILE_SIZE * (*map_obj)->size.y, "shit");
+  if (!window) {
+    mlx_destroy_display(mlx);
+    free(mlx);
+    error_handler(MLX_FAIL);
+  }
   obj = malloc(sizeof(t_game));
   if (!obj) {
-    free(obj);
+    mlx_destroy_window(mlx, window);
+    mlx_destroy_display(mlx);
+    free(mlx);
     error_handler(MLX_FAIL);
   }
   obj->mlx = mlx;
   obj->win = window;
   obj->map = *map_obj;
+  obj->textures.player = NULL;
+  obj->textures.wall = NULL;
+  obj->textures.floor = NULL;
+  obj->textures.exit = NULL;
+  obj->textures.collectible = NULL;
   obj->moves = 0;
   obj->collected = 0;
   return (obj);
 }
 
 void free_mlx_obj(t_game **obj) {
-  // t_map map;
-  // map = obj->map;
-  // free_map_object(&map);
+  if (!obj || !*obj)
+    return;
+  if ((*obj)->textures.player)
+    mlx_destroy_image((*obj)->mlx, (*obj)->textures.player);
+  if ((*obj)->textures.wall)
+    mlx_destroy_image((*obj)->mlx, (*obj)->textures.wall);
+  if ((*obj)->textures.exit)
+    mlx_destroy_image((*obj)->mlx, (*obj)->textures.exit);
+  if ((*obj)->textures.collectible)
+    mlx_destroy_image((*obj)->mlx, (*obj)->textures.collectible);
+  if ((*obj)->textures.floor)
+    mlx_destroy_image((*obj)->mlx, (*obj)->textures.floor);
   free_map_object((*obj)->map);
   mlx_destroy_window((*obj)->mlx, (*obj)->win);
   mlx_destroy_display((*obj)->mlx);
