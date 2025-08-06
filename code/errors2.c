@@ -6,7 +6,7 @@
 /*   By: fuulgen <fuulgen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 22:27:06 by fuulgen           #+#    #+#             */
-/*   Updated: 2025/08/06 15:13:12 by fuulgen          ###   ########.fr       */
+/*   Updated: 2025/08/06 17:18:43 by fuulgen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	error_writer(char *str)
 	}
 	write(2, "\033[0m", 4);
 }
+
 int	ft_strcmp(const char *s1, const char *s2)
 {
 	size_t	i;
@@ -36,6 +37,7 @@ int	ft_strcmp(const char *s1, const char *s2)
 	}
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
+
 void	check_file_name(char *file)
 {
 	char	*extension;

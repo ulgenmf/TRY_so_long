@@ -6,12 +6,11 @@
 /*   By: fuulgen <fuulgen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 07:51:47 by fuulgen           #+#    #+#             */
-/*   Updated: 2025/08/04 09:59:53 by fuulgen          ###   ########.fr       */
+/*   Updated: 2025/08/06 17:18:20 by fuulgen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdlib.h>
 
 // void	wait_(int n)
 // {
@@ -101,6 +100,7 @@ void	run_that_shit(char *argv_file_name)
 	else
 	{
 		error_writer("\nMap is not solvable `flood fill err`\n");
+		exit(EXIT_FAILURE);
 	}
 	while (map[i])
 	{

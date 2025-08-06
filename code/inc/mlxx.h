@@ -6,7 +6,7 @@
 /*   By: fuulgen <fuulgen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 10:54:25 by fuulgen           #+#    #+#             */
-/*   Updated: 2025/08/05 18:48:24 by fuulgen          ###   ########.fr       */
+/*   Updated: 2025/08/06 17:20:01 by fuulgen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_game
 	int			collected;
 }				t_game;
 void			get_locations(t_map *object);
+void			check_map_size(t_game *obj);
 void			free_map(char **map);
 void			free_map_object(t_map *object);
 void			free_mlx_obj(t_game **obj);

@@ -6,7 +6,7 @@
 /*   By: fuulgen <fuulgen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 20:10:27 by fuulgen           #+#    #+#             */
-/*   Updated: 2025/08/05 20:14:09 by fuulgen          ###   ########.fr       */
+/*   Updated: 2025/08/06 17:21:12 by fuulgen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static char	*shitter(int shit, char **shits)
 
 	if (shit != 2)
 	{
-		ft_printf("\n Map name is not passed, will use default map \n");
-		file_n = DEFAULT_MAP;
+		ft_printf("\n Map name is not passed, bye \n");
+		exit(EXIT_FAILURE);
 	}
 	else
 	{
@@ -42,6 +42,7 @@ int	main(int shit, char **shits)
 	game = mlx_init_(&map_obj);
 	if (!game)
 		return (1);
+	check_map_size(game);
 	load_textures(game);
 	draw_map(game);
 	mlx_key_hook(game->win, key_hook, game);

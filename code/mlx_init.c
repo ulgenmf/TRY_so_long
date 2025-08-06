@@ -6,7 +6,7 @@
 /*   By: fuulgen <fuulgen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 20:14:52 by fuulgen           #+#    #+#             */
-/*   Updated: 2025/08/05 20:20:13 by fuulgen          ###   ########.fr       */
+/*   Updated: 2025/08/06 17:11:30 by fuulgen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,16 @@ void	shitter(t_game *obj)
 	obj->textures.floor = NULL;
 	obj->textures.exit = NULL;
 	obj->textures.collectible = NULL;
+}
+
+void	check_map_size(t_game *obj)
+{
+	if (obj->map->size.x > 15 || obj->map->size.y > 15)
+	{
+		free_mlx_obj(&obj);
+		ft_printf("ajkhjhksajkdsajkasdkjsadjksas");
+		error_handler(MLX_FAIL);
+	}
 }
 
 t_game	*mlx_init_(t_map **map_obj)

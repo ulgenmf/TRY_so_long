@@ -6,34 +6,33 @@
 /*   By: fuulgen <fuulgen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 14:55:05 by fuulgen           #+#    #+#             */
-/*   Updated: 2025/08/05 20:09:54 by fuulgen          ###   ########.fr       */
+/*   Updated: 2025/08/06 17:19:52 by fuulgen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	shhitter(t_game *game, int nx, int ny)
+static void	shhitter(t_game *game, int pos_x, int pos_y)
 {
 	game->map->grid[game->map->player_loc.y][game->map->player_loc.x] = '0';
-	game->map->player_loc.x = nx;
-	game->map->player_loc.y = ny;
-	game->map->grid[ny][nx] = 'P';
+	game->map->player_loc.x = pos_x;
+	game->map->player_loc.y = pos_y;
+	game->map->grid[pos_y][pos_x] = 'P';
 }
 
 static void	try_move(t_game *game, int dx, int dy)
 {
-	int		nx;
-	int		ny;
+	int		pos_x;
+	int		pos_y;
 	char	dest;
 
-	nx = game->map->player_loc.x + dx;
-	ny = game->map->player_loc.y + dy;
-	dest = game->map->grid[ny][nx];
+	pos_x = game->map->player_loc.x + dx;
+	pos_y = game->map->player_loc.y + dy;
+	dest = game->map->grid[pos_y][pos_x];
 	if (dest == '1')
 		return ;
 	if (dest == 'E' && game->collected != game->map->collectible_count)
 	{
-		ft_printf("\n get the flag first \n");
 		return ;
 	}
 	if (dest == 'C')
@@ -42,9 +41,10 @@ static void	try_move(t_game *game, int dx, int dy)
 	{
 		ft_printf("Moves: %d\n", ++game->moves);
 		free_mlx_obj(&game);
+		ft_printf("you won\n");
 		exit(EXIT_SUCCESS);
 	}
-	shhitter(game, nx, ny);
+	shhitter(game, pos_x, pos_y);
 	ft_printf("Moves: %d\n", ++game->moves);
 	draw_map(game);
 }
@@ -64,18 +64,18 @@ static void	try_move(t_game *game, int dx, int dy)
 //   }
 // }
 // static void try_move(t_game *game, int dx, int dy) {
-//   int nx;
-//   int ny;
+//   int pos_x;
+//   int pos_y;
 //   char dest;
 //
-//   nx = game->map->player_loc.x + dx;
-//   ny = game->map->player_loc.y + dy;
-//   dest = game->map->grid[ny][nx];
+//   pos_x = game->map->player_loc.x + dx;
+//   pos_y = game->map->player_loc.y + dy;
+//   dest = game->map->grid[pos_y][pos_x];
 //   logger(game, dest);
 //   game->map->grid[game->map->player_loc.y][game->map->player_loc.x] = '0';
-//   game->map->player_loc.x = nx;
-//   game->map->player_loc.y = ny;
-//   game->map->grid[ny][nx] = 'P';
+//   game->map->player_loc.x = pos_x;
+//   game->map->player_loc.y = pos_y;
+//   game->map->grid[pos_y][pos_x] = 'P';
 //   ft_printf("Moves: %d\n", ++game->moves);
 //   draw_map(game);
 // }

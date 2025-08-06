@@ -36,10 +36,10 @@ LIBS    = code/mlx/libmlx.a  code/mlx/libmlx_Linux.a  code/libft/libft.a code/pr
 ############|for reference/testing|###########
 ############|---------------------|###########
 ##############################################
-BASE_DIR        := $(shell pwd)
-MAPS_DIR        = assets/maps
-VALID_MAPS_DIR  = ${MAPS_DIR}/valid
-INVALID_MAPS_DIR= ${MAPS_DIR}/invalid
+VALID_MAPS = maps/valid/one.ber maps/valid/tree.ber maps/valid/two.ber
+INVALID_MAPS = maps/invalid/duplicate_exit.ber maps/invalid/duplicate_player.ber maps/invalid/forbidden_character.ber maps/invalid/no_collectible.ber maps/invalid/no_exit.ber maps/invalid/no_path_to_all_collectibles.ber maps/invalid/no_path_to_exit.ber maps/invalid/no_player.ber maps/invalid/not_enclosed_middle_edge.ber maps/invalid/not_enclosed_top_left.ber maps/invalid/not_rectangular.ber maps/invalid/one.b maps/invalid/tree.berrr maps/invalid/two.shit
+ALL_MAPS = $(VALID_MAPS) $(INVALID_MAPS)
+
 
 ##############################################
 ############|---------------------|###########
@@ -129,14 +129,9 @@ leak: $(NAME)
 	@valgrind --leak-check=full --track-origins=yes ./$(NAME)
 mr: all
 	./$(NAME)
-
-list_maps:
-	@for f in $(BASE_DIR)/$(MAPS_DIR)/$(INVALID_MAPS_DIR)/*; do \
-	echo "$(RED) starting || $$f"; \
+test_maps:
+	@for map in $(ALL_MAPS); do \
+		echo "Testing $$map:"; \
+		./so_long $$map || echo "FAILED on $$map"; \
+		echo ""; \
 	done
-	@for f in $(BASE_DIR)/$(MAPS_DIR)/$(INVALID_MAPS_DIR)/*; do \
-	base_f=$$(basename "$$f"); \
-	echo "$(RED) starting || $$base_f"; \
-done
-	@echo "$(YELLOW)Listing maps in ${MAPS_DIR}:$(NC)"
-	@ls $(BASE_DIR)/$(MAPS_DIR)/*

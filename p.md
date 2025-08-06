@@ -1,5 +1,4 @@
 
-Here’s your **`t_map` documentation** rewritten in clean Markdown format for your `plan.md` file — no fluff, fully practical.
 
 ---
 
@@ -104,6 +103,5 @@ typedef struct s_game {
 * No memory leaks when freeing `grid`
 
 ```
-
-Let me know if you want the same treatment for `t_game` or any other part.
+```
 ```
